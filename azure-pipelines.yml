@@ -11,6 +11,8 @@ pool:
 
 variables:
   imageName: 'your-container-image-name:$(build.buildId)'
+  dockerId: 'avaxxx'
+  dockerPassword: 'im231985'
 
 steps:
 - script: docker build -f Dockerfile -t $(imageName) .
