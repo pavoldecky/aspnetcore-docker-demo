@@ -16,5 +16,4 @@ RUN dotnet publish "web.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-EXPOSE 80
 ENTRYPOINT ["dotnet", "web.dll"]
