@@ -3,9 +3,20 @@ using System.Text;
 using System.Threading.Tasks;
 using MQTTnet;
 using MQTTnet.Client;
+using Newtonsoft.Json;
 
 namespace Client.MQTT
 {
+    class SensorInfo
+    {
+        //{ "temperature": 5.4, "humidity": 78, "battery": "0", "quality": 100 }
+        public string SensorId { get; set; }
+        public decimal temperature { get; set; }
+        public int humidity { get; set; }
+        public string battery { get; set; }   
+        public int quality { get; set; }
+    }
+
     class Program
     {
         static async Task Main(string[] args)
@@ -30,6 +41,14 @@ namespace Client.MQTT
                             Console.WriteLine($"+ QoS = {e.ApplicationMessage.QualityOfServiceLevel}");
                             Console.WriteLine($"+ Retain = {e.ApplicationMessage.Retain}");
                             Console.WriteLine();
+
+                            if (e.ApplicationMessage.Topic.Contains("sensor"))
+                            {
+                                var json = $"{Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}";
+
+                                SensorInfo sensorInfo = JsonConvert.DeserializeObject<SensorInfo>(json);
+                                sensorInfo.SensorId = e.ApplicationMessage.Topic;
+                            }
                         }
                         catch(Exception ex)
                         {
