@@ -33,7 +33,7 @@ namespace Client.MQTT
                         }
                         catch(Exception ex)
                         {
-
+                            var message = ex.Message;
                         }
                        
                     };
