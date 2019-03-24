@@ -47,7 +47,7 @@ namespace Client.MQTT
                                 var json = $"{Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}";
 
                                 SensorInfo sensorInfo = JsonConvert.DeserializeObject<SensorInfo>(json);
-                                sensorInfo.SensorId = e.ApplicationMessage.Topic;
+                                sensorInfo.SensorId = e.ApplicationMessage.Topic; 
                             }
                         }
                         catch(Exception ex)
