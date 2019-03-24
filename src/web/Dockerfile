@@ -14,6 +14,7 @@ FROM build AS publish
 RUN dotnet publish "web.csproj" -c Release -o /app
 
 FROM base AS final
+COPY qemu-arm-static /usr/bin/qemu-arm-static
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "web.dll"]
