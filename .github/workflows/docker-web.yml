@@ -21,6 +21,7 @@ jobs:
           CONTAINER_IMAGE_NAME: "avaxxx/aspnetcore-docker-demo:arm-15"
         run:
            docker build -t $CONTAINER_IMAGE_NAME ../.
+        working-directory: ./src
       - name: Push Docker Container to Registry
         env:
           CONTAINER_IMAGE_NAME: "avaxxx/aspnetcore-docker-demo:arm-15"
