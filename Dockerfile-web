@@ -8,7 +8,7 @@ COPY src/web/ .
 RUN dotnet publish -c Release -o /out web.csproj
 
 # app image
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim-arm32v7
 
 WORKDIR /app
 ENTRYPOINT ["dotnet", "web.dll"]
