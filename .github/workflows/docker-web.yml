@@ -27,6 +27,6 @@ jobs:
         name: Run Buildx
         run: |
           docker buildx build \
-            -t avaxxx/aspnetcore-docker-demo:arm-13
+            -t avaxxx/aspnetcore-docker-demo:arm-13 \
             --platform linux/arm/v7 \
             --file Dockerfile-web .
