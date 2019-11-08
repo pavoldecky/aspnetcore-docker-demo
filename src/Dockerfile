@@ -32,6 +32,6 @@ RUN dotnet publish -c Release -o /out web.csproj
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim-arm32v7
 
 WORKDIR /app
-ENTRYPOINT ["dotnet", "web.dll"]
+ENTRYPOINT ["dotnet", "web.dll"] 
 
 COPY --from=builder /out/ .
